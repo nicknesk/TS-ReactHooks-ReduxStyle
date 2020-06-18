@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router, RouteComponentProps } from '@reach/router';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Layout from './Layout';
+import HomePage from './HomePage';
+import FavPage from './FavPage';
+import NotFound from './NotFound';
+import { StoreProvider } from './Store';
+
+export const URL = "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
+
+const RouterPageWithLayout = ( props: { pageComponent: JSX.Element} & RouteComponentProps ) =>
+    <Layout>{props.pageComponent}</Layout>;
+
+function App(): JSX.Element {
+    return (
+        <StoreProvider>
+            <Router>
+                <RouterPageWithLayout pageComponent = {<HomePage/>} path = "/"/>
+                <RouterPageWithLayout pageComponent = {<FavPage/>} path = "/faves"/>
+                <RouterPageWithLayout pageComponent = {<NotFound/>} default/>
+            </Router>
+        </StoreProvider>
+    );
 }
 
 export default App;
