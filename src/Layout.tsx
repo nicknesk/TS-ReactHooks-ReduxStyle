@@ -6,7 +6,7 @@ import {
     Toolbar, Typography, Theme,
 } from "@material-ui/core";
 
-import { Store } from './Store';
+import { Store } from './store/Store';
 
 export const URL = "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
 

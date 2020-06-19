@@ -7,8 +7,8 @@ import {
     Typography, CardActions, IconButton } from '@material-ui/core';
 import FavoriteIcon from "@material-ui/icons/Favorite";  
 
-import Store from './Store';
-import { toggleFavAction } from './Actions';
+import Store from './store/Store';
+import { toggleFavAction } from './store/Actions';
 
 const useStyles = makeStyles({
     root: {

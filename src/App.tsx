@@ -5,20 +5,33 @@ import Layout from './Layout';
 import HomePage from './HomePage';
 import FavPage from './FavPage';
 import NotFound from './NotFound';
-import { StoreProvider } from './Store';
+import { StoreProvider } from './store/Store';
 
 export const URL = "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
 
-const RouterPageWithLayout = ( props: { pageComponent: JSX.Element} & RouteComponentProps ) =>
-    <Layout>{props.pageComponent}</Layout>;
+const RouterPage = ( 
+    props: { component: JSX.Element, layout: any } & RouteComponentProps 
+) => <div>{props.layout}{props.component}</div>;
 
 function App(): JSX.Element {
     return (
         <StoreProvider>
             <Router>
-                <RouterPageWithLayout pageComponent = {<HomePage/>} path = "/"/>
-                <RouterPageWithLayout pageComponent = {<FavPage/>} path = "/faves"/>
-                <RouterPageWithLayout pageComponent = {<NotFound/>} default/>
+                <RouterPage 
+                    component = {<HomePage/>} 
+                    layout = {<Layout/>} 
+                    path = "/"
+                />
+                <RouterPage
+                    component = {<FavPage/>} 
+                    layout = {<Layout/>} 
+                    path = "/faves"
+                />
+                <RouterPage 
+                    component = {<NotFound/>} 
+                    layout = {<Layout/>} 
+                    default
+                /> 
             </Router>
         </StoreProvider>
     );

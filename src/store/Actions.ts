@@ -1,5 +1,5 @@
-import { URL } from "./App";
-import { IEpisode, IState, IDispatch } from './interfaces';
+import { URL } from "../App";
+import { IEpisode, IState, IDispatch } from '../interfaces';
 
 export const fetchDataAction = async (dispatch: IDispatch) =>  {
     const data = await fetch(URL);

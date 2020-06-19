@@ -1,8 +1,8 @@
 import React, { Suspense, useContext, lazy, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 
-import Store from './Store';
-import { fetchDataAction } from './Actions';
+import Store from './store/Store';
+import { fetchDataAction } from './store/Actions';
 
 
 const EpisodesList = lazy<any>( () => import("./EpisodesList"));
