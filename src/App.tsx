@@ -2,9 +2,9 @@ import React from 'react';
 import { Router, RouteComponentProps } from '@reach/router';
 
 import Layout from './Layout';
-import HomePage from './HomePage';
-import FavPage from './FavPage';
-import NotFound from './NotFound';
+import HomePage from './pages/home/HomePage';
+import FavPage from './pages/FavPage';
+import NotFound from './pages/NotFound';
 import { StoreProvider } from './store/Store';
 
 export const URL = "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";

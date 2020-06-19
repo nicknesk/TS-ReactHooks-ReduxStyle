@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { IEpisode } from './interfaces';
+import { IEpisode } from '../../../interfaces';
 
 import { 
     Grid, makeStyles, Card, 
@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import FavoriteIcon from "@material-ui/icons/Favorite";  
 
-import Store from './store/Store';
+import Store from '../../../store/Store';
 
 const useStyles = makeStyles({
     root: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     }
   });
 
-function EpisodesList(...props: any ): JSX.Element[] {
+function EpisodesList( props: {episodes: IEpisode[], favourites: IEpisode[]} ): JSX.Element[] {
     const { state, dispatch } = useContext(Store);
     const { episodes, favourites } = state;
     const classes = useStyles();
