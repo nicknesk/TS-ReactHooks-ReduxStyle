@@ -1,5 +1,6 @@
 import React, { Suspense, useContext, lazy, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
+
 import Store from '../../store/Store';
 import { IDispatch } from '../../interfaces';
 import { URL } from "../../App";
@@ -16,15 +17,19 @@ export const fetchDataAction = async (dispatch: IDispatch) =>  {
 }
 
 function HomePage(props: any) {
-    const { dispatch } = useContext(Store)
+    const { state, dispatch } = useContext(Store)
    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect( () => { fetchDataAction(dispatch) }, [])
+    useEffect( () => { state.episodes.length ===0 && fetchDataAction(dispatch) } )
 
+    const episodeProps = {
+        episodes: state.episodes,
+        favourites: state.favourites
+    };
+    console.log(state)
     return (
         <Grid container justify = "space-around" spacing = {1}>
-            <Suspense fallback = {<div>loading...</div>}>
-                <EpisodesList/>
+            <Suspense fallback = { <div>loading...</div> }>
+                <EpisodesList { ...episodeProps } />
             </Suspense>
         </Grid>
     );

@@ -31,16 +31,20 @@ const useStyles = makeStyles({
     }
   });
 
-function EpisodesList( props: {episodes: IEpisode[], favourites: IEpisode[]} ): JSX.Element[] {
+function EpisodesList( props: {episodes: IEpisode[]} & any ): JSX.Element[] {
     const { state, dispatch } = useContext(Store);
-    const { episodes, favourites } = state;
+    const { episodes,  ...other } = props;
+    const { favourites } = state;
     const classes = useStyles();
     
     return ( 
         episodes.map( (episode:IEpisode): JSX.Element => {
-            const color = favourites.includes(episode) ? "secondary" : "default";
+            // const isEpisodeInFav = favourites.find( (fav: IEpisode) => fav.id === episode.id);
+            const isEpisodeInFav = favourites.includes(episode);
+            // debugger
+            const color = isEpisodeInFav ? "secondary" : "default";
             return (
-                <Grid item key = { episode.id } { ...props }>
+                <Grid item key = { episode.id } { ...other }>
                     <Card className={ classes.root }>
                          <CardActionArea>
                             <CardMedia

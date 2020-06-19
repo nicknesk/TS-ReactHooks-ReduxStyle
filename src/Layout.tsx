@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function Layout( props: {children: JSX.Element} & any ): JSX.Element {
-// function Layout( children: JSX.Element, {...other}: any): JSX.Element {
     const { state } = useContext(Store)
     const classes = useStyles();
     const { children, ...other } = props;
