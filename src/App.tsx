@@ -10,8 +10,12 @@ import { StoreProvider } from './store/Store';
 export const URL = "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
 
 const RouterPage = ( 
-    props: { component: JSX.Element, layout: any } & RouteComponentProps 
-) => <div>{props.layout}{props.component}</div>;
+    props: { 
+        component: JSX.Element, 
+        layout: JSX.Element 
+    }  
+    & RouteComponentProps 
+) => <React.Fragment>{props.layout}{props.component}</React.Fragment>;
 
 function App(): JSX.Element {
     return (

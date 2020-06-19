@@ -1,5 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import { IState, IAction } from '../interfaces';
+import fetchDataAction from './Actions';
+
 
 const initialState:IState = {
     episodes: [],
@@ -9,17 +11,16 @@ const initialState:IState = {
 function reducer(state:IState, action:IAction):IState {
     const { type, payload } = action;
     switch (type) {
-        case "FETCH_DATA": {
+      
+        case "SET_EPISODES": {
             return {...state, episodes: payload}
         }
-        case "ADD_FAV": {
-            return {...state, favourites: [...state.favourites, payload]}
-        }
-        case "REMOVE_FAV": {
-            const newFavorits = state.favourites.filter( favourite => favourite.id !== payload.id )
+        case "TOGGLE_FAV": {
+            const newFavorits = state.favourites.includes(payload) 
+                ? state.favourites.filter( favourite => favourite.id !== payload.id )
+                : [...state.favourites, payload]
             return {...state, favourites: newFavorits}
         }
-           
         default:
             return state
     }

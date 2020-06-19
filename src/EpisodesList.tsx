@@ -4,11 +4,11 @@ import { IEpisode } from './interfaces';
 import { 
     Grid, makeStyles, Card, 
     CardMedia, CardContent, 
-    Typography, CardActions, IconButton } from '@material-ui/core';
+    Typography, CardActions, IconButton, CardActionArea 
+} from '@material-ui/core';
 import FavoriteIcon from "@material-ui/icons/Favorite";  
 
 import Store from './store/Store';
-import { toggleFavAction } from './store/Actions';
 
 const useStyles = makeStyles({
     root: {
@@ -42,25 +42,35 @@ function EpisodesList(...props: any ): JSX.Element[] {
             return (
                 <Grid item key = { episode.id } { ...props }>
                     <Card className={ classes.root }>
-                        <CardMedia
-                            className={ classes.media }
-                            image = { episode.image.medium }
-                            title = { episode.name }
-                        />
+                         <CardActionArea>
+                            <CardMedia
+                                className={ classes.media }
+                                image = { episode.image.medium }
+                                title = { episode.name }
+                            />
+                        </CardActionArea>
+                       
                         <CardContent className = {classes.content}>
-                            <Typography variant = "h6" component = "h2">
-                                { episode.name }
-                            </Typography>
+                            <CardActionArea>
+                                <Typography variant = "h6" component = "h2">
+                                    { episode.name }
+                                </Typography>
+                            </CardActionArea>
                             <Typography variant="body2" color="textSecondary" >
                                 Season: { episode.season } Number: { episode.number }
                             </Typography>
                         </CardContent>
+                       
                         <CardActions className = {classes.action}>
                             <IconButton 
                               aria-label="add to favorites" 
                               className = {classes.button} 
                               color = { color }
-                              onClick = { () => toggleFavAction( {state, dispatch}, episode) }
+                              onClick = { () => dispatch({
+                                    type: "TOGGLE_FAV",
+                                    payload: episode  
+                                  })
+                                }
                             >
                                 <FavoriteIcon/>
                             </IconButton>
