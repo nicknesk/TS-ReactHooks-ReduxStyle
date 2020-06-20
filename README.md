@@ -1,1 +1,2 @@
-Tutorial project React Context Store - Redux style.
+Tutorial project Type Script: React Context Store - Redux style.
+
