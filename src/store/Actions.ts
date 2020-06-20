@@ -1,7 +1,7 @@
 import { URL } from "../App";
-import { IDispatch } from "../interfaces";
+import { Dispatch } from "../interfaces";
 
-export const fetchDataAction = async (dispatch: IDispatch) =>  {
+export const fetchDataAction = async (dispatch: Dispatch) =>  {
     const data = await fetch(URL);
     const dataJSON = await data.json();
     return dispatch({

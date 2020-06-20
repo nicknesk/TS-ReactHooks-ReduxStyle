@@ -10,7 +10,7 @@ function reducer(state:IState, action:IAction):IState {
     const { type, payload } = action;
     switch (type) {
         case "SET_EPISODES": {
-            return {...state, episodes: payload}
+            return {...state, episodes: action.payload}
         }
         case "TOGGLE_FAV": {
             const isEpisodeInFav = state.favourites.includes(payload);

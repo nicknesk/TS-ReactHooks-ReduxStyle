@@ -1,3 +1,5 @@
+export type Dispatch = React.Dispatch<IAction>;
+
 export interface IState{
     episodes: Array<IEpisode>,
     favourites: Array<IEpisode>
@@ -5,7 +7,7 @@ export interface IState{
 
 export interface IAction {
     type: string,
-    payload: any
+    payload: IEpisode & IEpisode[]
 }
 
 export interface IEpisode {
@@ -20,8 +22,4 @@ export interface IEpisode {
     season: number,
     summary: string
     url: string
-}
-
-export interface IDispatch {
-    ( action: IAction ): IState
 }
