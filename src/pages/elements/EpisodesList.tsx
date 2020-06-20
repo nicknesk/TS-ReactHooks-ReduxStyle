@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { IEpisode } from '../../../interfaces';
+import { IEpisode } from '../../interfaces';
 
 import { 
     Grid, makeStyles, Card, 
@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import FavoriteIcon from "@material-ui/icons/Favorite";  
 
-import Store from '../../../store/Store';
+import Store from '../../store/Store';
 
 const useStyles = makeStyles({
     root: {
@@ -31,20 +31,19 @@ const useStyles = makeStyles({
     }
   });
 
-function EpisodesList( props: {episodes: IEpisode[]} & any ): JSX.Element[] {
+function EpisodesList( {episodes, ...other}: {episodes: IEpisode[]} ): JSX.Element[] {
+   
     const { state, dispatch } = useContext(Store);
-    const { episodes,  ...other } = props;
     const { favourites } = state;
     const classes = useStyles();
     
     return ( 
         episodes.map( (episode:IEpisode): JSX.Element => {
-            // const isEpisodeInFav = favourites.find( (fav: IEpisode) => fav.id === episode.id);
             const isEpisodeInFav = favourites.includes(episode);
-            // debugger
             const color = isEpisodeInFav ? "secondary" : "default";
+          
             return (
-                <Grid item key = { episode.id } { ...other }>
+                <Grid item key = { episode.id } {...other}>
                     <Card className={ classes.root }>
                          <CardActionArea>
                             <CardMedia

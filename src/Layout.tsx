@@ -11,31 +11,30 @@ import { Store } from './store/Store';
 export const URL = "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-        flexGrow: 1,
-    },
-    title: {
-        flexGrow: 1,
-        textDecoration: "none"
-    },
-    body: {
-        marginTop: 75
-    },
-    link: {
-        textDecoration: "none",
-        color: "inherit",
-        "&:hover": {
-            color: theme.palette.secondary.main
+    createStyles({
+        root: {
+            flexGrow: 1,
         },
-    }
-  }),
+        title: {
+            flexGrow: 1,
+            textDecoration: "none"
+        },
+        body: {
+            marginTop: 80
+        },
+        link: {
+            textDecoration: "none",
+            color: "inherit",
+            "&:hover": {
+                color: theme.palette.secondary.main
+            },
+        }
+    }),
 );
 
-function Layout( props: {children: JSX.Element} & any ): JSX.Element {
+function Layout( { children, ...other }: {children: JSX.Element} & any ): JSX.Element {
     const { state } = useContext(Store)
     const classes = useStyles();
-    const { children, ...other } = props;
 
     return <>
        <div className={classes.root}>

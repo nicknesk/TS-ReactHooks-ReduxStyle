@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import { IState, IAction } from '../interfaces';
 
 
-const initialState:IState = {
+const initialState: IState = {
     episodes: [],
     favourites: []
 }
@@ -28,8 +28,7 @@ function reducer(state:IState, action:IAction):IState {
 
 export const Store = createContext<IState | any>(initialState);
 
-export function StoreProvider(props:any) {
-    const { children, ...other} = props;
+export function StoreProvider( { children, ...other}: { children: JSX.Element }  ) {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return (

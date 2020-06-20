@@ -3,7 +3,7 @@ import { Router, RouteComponentProps } from '@reach/router';
 
 import Layout from './Layout';
 import HomePage from './pages/home/HomePage';
-import FavPage from './pages/FavPage';
+import FavPage from './pages/fav/FavPage';
 import NotFound from './pages/NotFound';
 import { StoreProvider } from './store/Store';
 
