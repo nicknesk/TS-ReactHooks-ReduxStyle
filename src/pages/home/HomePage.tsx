@@ -6,7 +6,7 @@ import { fetchDataAction } from '../../store/Actions';
 
 const EpisodesList = lazy<any>( () => import("../elements/EpisodesList"));
 
-function HomePage(props: any) {
+function HomePage(props: any): JSX.Element {
     const { state, dispatch } = useContext(Store)
    
     useEffect( () => { state.episodes.length ===0 && fetchDataAction(dispatch) } )
