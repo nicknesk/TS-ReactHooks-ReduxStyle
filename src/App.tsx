@@ -6,10 +6,11 @@ import HomePage from './pages/home/HomePage';
 import FavPage from './pages/fav/FavPage';
 import NotFound from './pages/NotFound';
 import { StoreProvider } from './store/Store';
+import Routes from './Routes';
 
 export const URL = "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
 
-const RouterPage = ( 
+export const RouterPage = ( 
     props: { 
         component: JSX.Element, 
         layout: JSX.Element 
@@ -22,18 +23,18 @@ function App(): JSX.Element {
         <StoreProvider>
             <Router>
                 <RouterPage 
-                    component = {<HomePage/>} 
-                    layout = {<Layout/>} 
-                    path = "/"
+                        component = {<HomePage/>} 
+                        layout = {<Layout childPage="home"/>} 
+                        path = "/"
                 />
                 <RouterPage
                     component = {<FavPage/>} 
-                    layout = {<Layout/>} 
+                    layout = {<Layout childPage="fav"/>} 
                     path = "/faves"
                 />
                 <RouterPage 
                     component = {<NotFound/>} 
-                    layout = {<Layout/>} 
+                    layout = {<Layout childPage="404"/>} 
                     default
                 /> 
             </Router>

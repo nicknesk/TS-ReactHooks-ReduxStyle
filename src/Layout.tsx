@@ -32,10 +32,12 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-function Layout( { children, ...other }: {children: JSX.Element} & any ): JSX.Element {
+function Layout( { children, childPage, ...other }: 
+    {children: JSX.Element, childPage: string} & any ): JSX.Element {
+        
     const { state } = useContext(Store)
     const classes = useStyles();
-
+  
     return <>
        <div className={classes.root}>
            <AppBar position = "fixed" color = "default">
